@@ -1,0 +1,234 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="SiteMaster.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300i,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="css/lightgallery.min.css">    
+    
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+    
+    <link rel="stylesheet" href="css/swiper.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="capture/css/animate.css">
+    
+    <link rel="stylesheet" href="capture/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="capture/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="capture/css/magnific-popup.css">
+
+   <link rel="stylesheet" href="capture/css/style.css">
+    <style>
+        #logoMain 
+        {
+            width:100px;
+            position:absolute;
+            /*top: -15px;
+            left: 200px;*/
+            top: -28px;
+    left: 110px;
+        }
+
+        .myFooter {
+    /*position: relative;
+    top: 60px;*/
+    position: relative;
+    top: 6em;
+    /*padding: 2em 0;*/
+	/*margin: 3em 0;*/
+	border-top: 1px solid #ddd;
+	color: #999;
+	text-align: center;
+
+}
+
+   ul.dropdown {
+    width: 250px;
+    }
+        @media (min-width: 768px) {
+            .site-section-heading {
+                font-size: 3rem;
+            }
+        }
+
+        ul.site-menu.js-clone-nav.mx-auto.d-none.d-lg-block li a,
+        .site-menu[data-class="social"] a
+        {
+         color: #999;
+        }
+            ul.site-menu.js-clone-nav.mx-auto.d-none.d-lg-block li a:hover,
+            .site-menu[data-class="social"] a:hover
+            {
+                color: #111;
+            }
+
+        .site-navbar .site-navigation .site-menu .has-children .dropdown {
+            border-top: 2px solid #111;
+        }
+
+        .myColor,.myColor:hover, .myColor a {
+            color: #111 !important;
+        }
+    </style>
+</head>
+<body>
+  <form id="form1" runat="server">
+      <div class="site-wrap">
+
+          <div class="site-mobile-menu">
+              <div class="site-mobile-menu-header">
+                  <div class="site-mobile-menu-close mt-3">
+                      <span class="icon-close2 js-menu-toggle"></span>
+                  </div>
+              </div>
+              <div class="site-mobile-menu-body"></div>
+          </div>
+
+
+
+
+          <header class="site-navbar py-3" role="banner">
+
+              <div class="container-fluid">
+                  <div class="row align-items-center">
+
+                      <div class="col-6 col-xl-2" data-aos="fade-down">
+                          
+                             
+                                       <a href="Default.aspx" class="text-black h2 mb-0">
+                                 <p style="width: 230px;font-weight: bold;font-family: cursive;padding: 0px 10px;border: 5px solid black;">AMANPREET</p>
+                                      </a>
+                                     
+
+                          
+                      </div>
+                      <div class="col-10 col-md-8 d-none d-xl-block" data-aos="fade-down">
+                          <nav class="site-navigation position-relative text-right text-lg-center" role="navigation">
+
+                              <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
+                                  <li id="pg1" runat="server" class="myColor"><a href="Default.aspx">Home</a></li>
+                                  <li id="pg2" runat="server" class="has-children">
+                                      <a href="#">Portfolio</a>
+                                      <ul class="dropdown">
+                                          <asp:Repeater ID="repCategories" runat="server">
+                                              <HeaderTemplate></HeaderTemplate>
+                                              <ItemTemplate>
+                                                  <%-- <asp:HiddenField runat="server" ID="hfCategoryId" Value='<%# Eval("CategoryID") %>' />--%>
+                                                  <li><a href='Portfolio.aspx?CategoryId=<%# Eval("CategoryID") %>'><%# Eval("CategoryName") %></a></li>
+                                              </ItemTemplate>
+                                              <FooterTemplate></FooterTemplate>
+                                          </asp:Repeater>
+                                      </ul>
+                                  </li>
+                                  <li id="pg3" runat="server"><a href="Videos.aspx">Videos</a></li>
+                                  <li id="pg4" runat="server"><a href="About.aspx">About</a></li>
+                                  <%--<li><a href="contact.html">Contact</a></li>--%>
+                              </ul>
+                          </nav>
+                      </div>
+
+                      <div class="col-6 col-xl-2 text-right" data-aos="fade-down">
+                          <div class="d-none d-xl-inline-block">
+                              <ul class="site-menu js-clone-nav ml-auto list-unstyled d-flex text-right mb-0" data-class="social">
+                                  <li>
+                                      <a href="#" target="_blank" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                                  </li>
+                                  <li>
+                                      <a href="#" target="_blank" class="pl-3 pr-3"><span class="icon-behance"></span></a>
+                                  </li>
+                                  <li>
+                                      <a href="#" target="_blank" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                                  </li>
+                                  <li>
+                                      <a href="#" target="_blank" class="pl-3 pr-3"><span class="icon-youtube-play"></span></a>
+                                  </li>
+                              </ul>
+                          </div>
+
+                          <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+                      </div>
+
+                  </div>
+              </div>
+
+          </header>
+
+          <asp:ContentPlaceHolder ID="HomeContent" runat="server">
+
+          </asp:ContentPlaceHolder>
+         
+          
+          <div class="footer py-4">
+            <div class="container-fluid text-center">
+                <div class="container">
+                    <div class="row myFooter">
+                        <div class="col-12">
+                  <p class="text-center">
+                     
+                      Copyright &copy; <script>document.write(new Date().getFullYear());</script>
+                      All rights reserved | Made with <i class="icon-heart-o" aria-hidden="true"></i> by <a class="myColor" href="#" target="_blank"> Amanpreet singh</a>
+                     
+                  </p>
+                            </div>
+                        </div>
+                 </div>
+              </div>
+          </div>
+          </div>
+     
+
+  <script src="js/jquery-3.3.1.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.countdown.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/bootstrap-datepicker.min.js"></script>
+  <script src="js/swiper.min.js"></script>
+  <script src="js/aos.js"></script>
+
+  <script src="js/picturefill.min.js"></script>
+  <script src="js/lightgallery-all.min.js"></script>
+  <script src="js/jquery.mousewheel.min.js"></script>
+
+  <script src="js/main.js"></script>
+  
+  <script>
+    $(document).ready(function(){
+      $('#lightgallery').lightGallery();
+    });
+  </script>
+	  
+
+  <script src="capture/js/jquery.waypoints.min.js"></script>
+  <script src="capture/js/jquery.stellar.min.js"></script>
+  <script src="capture/js/owl.carousel.min.js"></script>
+  <script src="capture/js/jquery.magnific-popup.min.js"></script>
+
+  <script src="capture/js/scrollax.min.js"></script>
+ <script src="capture/js/main.js"></script>
+	
+    </form>
+</body>
+</html>

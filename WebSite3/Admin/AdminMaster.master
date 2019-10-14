@@ -1,0 +1,113 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="AdminMaster.master.cs" Inherits="Admin_AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>
+        <asp:Literal ID="LtTitle" runat="server"></asp:Literal></title>
+    <meta charset="UTF-8" />
+
+<link rel="icon" href="../Image/12.png" type="image/png"/>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="css/fullcalendar.css" />
+<link rel="stylesheet" href="css/matrix-style.css" />
+<link rel="stylesheet" href="css/matrix-media.css" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" href="css/jquery.gritter.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+
+    <asp:ContentPlaceHolder id="AdminHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <!--Header-part-->
+<div  id="header">
+  <h3><a href="#">  <p style="width: 153px;font-weight: bold;font-family: cursive;padding: 0px 10px;border: 5px solid white;color: white;margin:  0px 15px;">AMANPREET</p></a></h3>
+</div>
+<!--close-Header-part--> 
+
+
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+  <ul class="nav">
+    <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome <asp:Label ID="lblusernamelogin" runat="server" Text="User"></asp:Label></span><b class="caret"></b></a>
+      <ul class="dropdown-menu">
+        <li><a href="ChangePswd.aspx"><i class="icon-lock"></i>Change Password</a></li>
+        <li class="divider"></li>
+        <li><asp:LinkButton ID="lnklogout1" OnClick="lnklogout_Click" runat="server"><i class="icon-key"></i>Logout</asp:LinkButton></li>
+      </ul>
+    </li>
+    
+    <li class=""><asp:LinkButton ID="lnklogout" runat="server" OnClick="lnklogout_Click"><i class="icon icon-share-alt"></i> Logout</asp:LinkButton></li>
+  </ul>
+</div>
+<!--close-top-Header-menu-->
+        <div id="sidebar" style="position:fixed;"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+  <ul>
+    <li runat="server" id="pg1"><a href="Dashboard.aspx"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+    <li runat="server" id="pg2"> <a href="HomeImages.aspx"><i class="icon icon-picture"></i> <span>Home Images</span></a> </li>
+    <li runat="server" id="pg3"> <a href="Categories.aspx"><i class="icon icon-folder-close"></i> <span>Categories</span></a> </li>
+    <li runat="server" id="pg4"> <a href="Portfolio.aspx"><i class="icon icon-picture"></i> <span>Portfolio</span></a> </li>
+    <li runat="server" id="pg5"> <a href="Video.aspx"><i class="icon icon-film"></i> <span>Video</span></a> </li>
+ </ul>
+</div>
+        <asp:ContentPlaceHolder id="AdminContent" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <!--Footer-part-->
+
+<div class="row-fluid">
+  <div id="footer" class="span12"> <script>document.write(new Date().getFullYear());</script> &copy; Amanpreet Singh Photography  </div>
+</div>
+
+<!--end-Footer-part-->
+       
+<script src="js/excanvas.min.js"></script> 
+ <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
+<script src="js/jquery.ui.custom.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.flot.min.js"></script> 
+<script src="js/jquery.flot.resize.min.js"></script> 
+<script src="js/jquery.peity.min.js"></script> 
+<script src="js/fullcalendar.min.js"></script> 
+<script src="js/matrix.js"></script> 
+<script src="js/matrix.dashboard.js"></script> 
+<%--<script src="js/jquery.gritter.min.js"></script> --%>
+<script src="js/matrix.interface.js"></script> 
+<script src="js/matrix.chat.js"></script> 
+<script src="js/jquery.validate.js"></script> 
+<script src="js/matrix.form_validation.js"></script> 
+<script src="js/jquery.wizard.js"></script> 
+<script src="js/jquery.uniform.js"></script> 
+<script src="js/select2.min.js"></script> 
+<script src="js/matrix.popover.js"></script> 
+<script src="js/jquery.dataTables.min.js"></script> 
+<script src="js/matrix.tables.js"></script> 
+        
+          <script type="text/javascript" src="js/jquery.richtext.js"></script>
+          <script>
+        $(document).ready(function() {
+            $('.content').richText();
+        });
+        </script>
+       <script type="text/javascript" src="js/jquery.charCountPlugin.js"></script>
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+            $('[data-charcount="true"]').charcount();
+        });
+    })(jQuery);
+</script>
+    </div>
+    </form>
+</body>
+</html>

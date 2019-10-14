@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AmanpreetPortModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BannerInfo">
+          <Key>
+            <PropertyRef Name="BannerID" />
+          </Key>
+          <Property Name="BannerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BannerName" Type="varchar" MaxLength="100" />
+          <Property Name="BannerExtension" Type="varchar" MaxLength="100" />
+          <Property Name="BannerSize" Type="int" />
+          <Property Name="BannerType" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="CategoryInfo">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="ImageInfo">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageName" Type="varchar" MaxLength="100" />
+          <Property Name="ImageExtension" Type="varchar" MaxLength="100" />
+          <Property Name="ImageSize" Type="int" />
+          <Property Name="ImageType" Type="varchar(max)" />
+          <Property Name="Imagecaption" Type="varchar" MaxLength="100" />
+          <Property Name="ImageDescription" Type="varchar(max)" />
+          <Property Name="CategoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="LoginInfo">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="EmailID" Type="varchar" MaxLength="100" />
+          <Property Name="SecurityQuestion" Type="varchar(max)" />
+          <Property Name="SecurityAnswer" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="videoYoutube">
+          <Key>
+            <PropertyRef Name="VideoYoutubeID" />
+          </Key>
+          <Property Name="VideoYoutubeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VideoSource" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="fkct">
+          <End Role="CategoryInfo" Type="Self.CategoryInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ImageInfo" Type="Self.ImageInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryInfo">
+              <PropertyRef Name="categoryId" />
+            </Principal>
+            <Dependent Role="ImageInfo">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AmanpreetPortModelStoreContainer">
+          <EntitySet Name="BannerInfo" EntityType="Self.BannerInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryInfo" EntityType="Self.CategoryInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ImageInfo" EntityType="Self.ImageInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoginInfo" EntityType="Self.LoginInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="videoYoutube" EntityType="Self.videoYoutube" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fkct" Association="Self.fkct">
+            <End Role="CategoryInfo" EntitySet="CategoryInfo" />
+            <End Role="ImageInfo" EntitySet="ImageInfo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AmanpreetPortModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BannerInfo">
+          <Key>
+            <PropertyRef Name="BannerID" />
+          </Key>
+          <Property Name="BannerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BannerName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BannerExtension" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BannerSize" Type="Int32" />
+          <Property Name="BannerType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CategoryInfo">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ImageInfoes" Relationship="Self.fkct" FromRole="CategoryInfo" ToRole="ImageInfo" />
+        </EntityType>
+        <EntityType Name="ImageInfo">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImageExtension" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImageSize" Type="Int32" />
+          <Property Name="ImageType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Imagecaption" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImageDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <NavigationProperty Name="CategoryInfo" Relationship="Self.fkct" FromRole="ImageInfo" ToRole="CategoryInfo" />
+        </EntityType>
+        <EntityType Name="LoginInfo">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="videoYoutube">
+          <Key>
+            <PropertyRef Name="VideoYoutubeID" />
+          </Key>
+          <Property Name="VideoYoutubeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VideoSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="fkct">
+          <End Role="CategoryInfo" Type="Self.CategoryInfo" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ImageInfo" Type="Self.ImageInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryInfo">
+              <PropertyRef Name="categoryId" />
+            </Principal>
+            <Dependent Role="ImageInfo">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AmanpreetPortEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BannerInfoes" EntityType="Self.BannerInfo" />
+          <EntitySet Name="CategoryInfoes" EntityType="Self.CategoryInfo" />
+          <EntitySet Name="ImageInfoes" EntityType="Self.ImageInfo" />
+          <EntitySet Name="LoginInfoes" EntityType="Self.LoginInfo" />
+          <EntitySet Name="videoYoutubes" EntityType="Self.videoYoutube" />
+          <AssociationSet Name="fkct" Association="Self.fkct">
+            <End Role="CategoryInfo" EntitySet="CategoryInfoes" />
+            <End Role="ImageInfo" EntitySet="ImageInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AmanpreetPortModelStoreContainer" CdmEntityContainer="AmanpreetPortEntities1">
+          <EntitySetMapping Name="BannerInfoes">
+            <EntityTypeMapping TypeName="AmanpreetPortModel.BannerInfo">
+              <MappingFragment StoreEntitySet="BannerInfo">
+                <ScalarProperty Name="BannerID" ColumnName="BannerID" />
+                <ScalarProperty Name="BannerName" ColumnName="BannerName" />
+                <ScalarProperty Name="BannerExtension" ColumnName="BannerExtension" />
+                <ScalarProperty Name="BannerSize" ColumnName="BannerSize" />
+                <ScalarProperty Name="BannerType" ColumnName="BannerType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryInfoes">
+            <EntityTypeMapping TypeName="AmanpreetPortModel.CategoryInfo">
+              <MappingFragment StoreEntitySet="CategoryInfo">
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ImageInfoes">
+            <EntityTypeMapping TypeName="AmanpreetPortModel.ImageInfo">
+              <MappingFragment StoreEntitySet="ImageInfo">
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ImageExtension" ColumnName="ImageExtension" />
+                <ScalarProperty Name="ImageSize" ColumnName="ImageSize" />
+                <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+                <ScalarProperty Name="Imagecaption" ColumnName="Imagecaption" />
+                <ScalarProperty Name="ImageDescription" ColumnName="ImageDescription" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoginInfoes">
+            <EntityTypeMapping TypeName="AmanpreetPortModel.LoginInfo">
+              <MappingFragment StoreEntitySet="LoginInfo">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+                <ScalarProperty Name="SecurityQuestion" ColumnName="SecurityQuestion" />
+                <ScalarProperty Name="SecurityAnswer" ColumnName="SecurityAnswer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="videoYoutubes">
+            <EntityTypeMapping TypeName="AmanpreetPortModel.videoYoutube">
+              <MappingFragment StoreEntitySet="videoYoutube">
+                <ScalarProperty Name="VideoYoutubeID" ColumnName="VideoYoutubeID" />
+                <ScalarProperty Name="VideoSource" ColumnName="VideoSource" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
